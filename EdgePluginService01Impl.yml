@@ -1,0 +1,37 @@
+	
+	package com.bxs.cloudmonitor.edge.impl;
+	
+	import com.bxs.cloudmonitor.common.R;
+	import com.bxs.cloudmonitor.edge.EdgePluginService01;
+
+	public class EdgePluginService01Impl implements EdgePluginService01 {
+		
+		@Override
+		public R<Object> execute01() {
+			...
+			return R.error("程序出错");
+		}
+
+		@Override
+		public R<String> execute02() {
+			...
+			return R.success("ok");
+		}
+	}
+
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.bxs.cloudmonitor.edge.impl.EdgePluginService01Impl
+
+
+
+default:
+  protocol: request
+  port: 6379
+  protocol: redis
+  server: edgex-redis
+  topic: rules-events
+  type: redis
+device01_conf:
+  topic: edgex/events/#/#/device01/#, edgex/events/app/#
+  messageType: request
+
